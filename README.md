@@ -1,11 +1,11 @@
-# docker-rails \r
+# docker-rails <br>
 dockerfile para gerar uma imagem com rails instalado e docker-compose  para rodar os serviços
 
-#para gerar a imagem \r
+#para gerar a imagem <br>
 docker build -t nomeimagem .
 
-#para iniciar o docker \r
+#para iniciar o docker <br>
 docker-compose up -d
 
-#conectarno container \r
+#conectarno container <br>
 ssh app@localhost -p 2222
