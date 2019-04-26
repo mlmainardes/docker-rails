@@ -1,0 +1,31 @@
+version: '3.3'
+
+services:
+  rails:
+    build: .
+    image: rails
+    volumes:
+      - ../workspace:/workspace
+    ports:
+      - "2222:22"
+      - "3000:3000"
+    depends_on:
+      - db
+    networks:
+      - my_network
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - ../bd/dados_postgres:/var/lib/postgresql/data
+    networks:
+      my_network:
+        aliases:
+          - pgsql
+
+networks: 
+  my_network:
