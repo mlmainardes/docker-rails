@@ -9,3 +9,7 @@ docker-compose up -d
 
 #conectarno container <br>
 ssh app@localhost -p 2222
+
+<br>
+
+password: app
