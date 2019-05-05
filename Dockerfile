@@ -2,13 +2,15 @@ FROM  ubuntu:latest
 LABEL maintainer="marllon_mainardes"
 
 # Atualiza o SO
-RUN apt-get update && apt-get install -y openssh-server vim curl sudo htop
+RUN apt-get update && apt-get install -y openssh-server vim curl sudo htop tzdata
 RUN apt-get update && apt-get install -y git
 RUN sudo apt-get install -y build-essential automake autoconf \
     bison libssl-dev libyaml-dev libreadline6-dev \
     zlib1g-dev libncurses5-dev libffi-dev libgdbm-dev \
     gawk g++ gcc make libc6-dev patch libsqlite3-dev sqlite3 \
     libtool pkg-config libpq-dev nodejs ruby-full
+
+RUN sudo apt-get update && sudo apt-get install -y yarn
 
 RUN mkdir /var/run/sshd
 
@@ -41,7 +43,7 @@ RUN /bin/bash -l -c "source /home/app/.rvm/scripts/rvm"
 RUN /bin/bash -l -c "source ~/.rvm/scripts/rvm"
 RUN /bin/bash -l -c "rvm requirements"
 
-RUN /bin/bash -l -c "rvm install 2.6.3"
+RUN /bin/bash -l -c "rvm install 2.5"
 RUN /bin/bash -l -c "touch ~/.gemrc"
 RUN /bin/bash -l -c "echo 'gem: --no-rdoc --no-ri' >> ~/.gemrc"
 
